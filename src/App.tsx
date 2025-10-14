@@ -1,9 +1,14 @@
+import Header from "./com/Header"
+import Main from "./com/Main"
+import { SearchProvider } from "./context/SearchContext"
+
 function App() {
 
   return (
-    <>
-     Hallo
-    </>
+    <SearchProvider>
+    <Header></Header>
+    <Main></Main>
+    </SearchProvider>
   )
 }
 
