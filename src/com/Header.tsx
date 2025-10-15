@@ -1,10 +1,14 @@
-import { CiCloudMoon } from "react-icons/ci";
+import { CiCloudMoon, CiCloudOn } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-import { useState } from "react";
-import Icons from "./Icons";
+import { useContext, useState } from "react";
 import { useSearch } from "../context/SearchContext";
+import { CityContext } from "./CityContext";
 import Input from "./Input";
+import Icon from "./Icon";
+import { IoMdClose } from "react-icons/io";
+import { FaCity } from "react-icons/fa";
+import { MdOutlineSettingsInputComposite } from "react-icons/md";
 
 const Header = () => {
   const [hamburger, setHamburger] = useState(false);
@@ -13,44 +17,83 @@ const Header = () => {
     setHamburger((value) => !value);
   }
 
-  const {setInput} = useSearch();
+  const { input, setInput } = useSearch();
+  const { setCity } = useContext(CityContext);
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     setInput(e.currentTarget.value);
   }
 
+  function handleClickIcon() {
+    if (input.trim() === "") {
+      console.log("The input field is empty");
+      return;
+    } else {
+      console.log(input);
+    }
+    setCity(input);
+    setInput("");
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter") {
+      console.log(input);
+      setCity(input);
+      setInput("");
+    }
+  }
+
   return (
-    <div className="fixed top-0 left-0 w-full md:w-auto md:h-full p-6">
+    <header className="absolute top-0 left-0 w-full md:w-auto md:h-full p-6">
       <div
-        className="p-4 flex flex-row md:flex-col items-center justify-between md:justify-start md:gap-12
-         border border-gray-400/50 h-full rounded-2xl bg-transparent md:bg-gray-900"
+        className="p-4 flex flex-row md:flex-col items-center justify-between 
+        gap-2 md:justify-start md:gap-12 border border-gray-400/50 h-full rounded-2xl 
+        bg-transparent md:bg-gray-900"
       >
-        <CiCloudMoon
-          className="w-8 h-8 text-white bg-blue-400 rounded-xl 
-        p-1 transition-transform duration-300 hover:scale-110 hover:bg-violet-500"
-        />
+           <Icon 
+        icon={<CiCloudMoon/>}
+        buttonClassName="bg-green-500 hover:bg-violet-500
+         transition-colors duration-300 rounded-xl p-1 md:p-2 flex-shrink-0"
+        iconClassName="">
+        </Icon>
 
-        <Input className="flex items-center justify-between relative md:hidden" handleInput={handleInput} ></Input>
+        <Input
+          className="flex items-center relative md:hidden"
+          handleInput={handleInput}
+          handleClickIcon={handleClickIcon}
+          handleKeyDown={handleKeyDown}
+        ></Input>
 
-        <GiHamburgerMenu
-          onClick={toggleHamburger}
-          className="w-8 h-8 md:hidden text-white  
-        p-1 transition-transform duration-300 hover:scale-110 hover:bg-violet-500"
-        ></GiHamburgerMenu>
+        <Icon 
+        icon={<GiHamburgerMenu onClick={toggleHamburger}/>}
+        buttonClassName="md:hidden p-1 flex-shrink-0"
+        iconClassName="">
+        </Icon>
+       
+       
 
-        {hamburger && (
-          <Icons
-            className="fixed inset-0 pt-10 flex flex-col items-center gap-6 bg-custom-gradient-dark"
-            toggleHamburger={toggleHamburger} cross={true}
-          ></Icons>
-        )}
+        <div
+          className={`${
+            hamburger &&
+            "fixed md:static inset-0 pt-10 flex flex-col items-center gap-6 bg-custom-gradient-dark z-50"
+          } 
+             ${!hamburger && "hidden md:flex flex-col items-center gap-6"}`}
+        >
+          <Icon
+            icon={<IoMdClose onClick={toggleHamburger} />}
+            buttonClassName="md:hidden flex-col"
+            label="Close"
+          ></Icon>
 
-        <Icons
-          className="hidden md:flex flex-col items-center gap-6"
-          cross={false}
-        ></Icons>
+          <Icon icon={<CiCloudOn />} label="Weather"></Icon>
+          <Icon icon={<FaCity />} label="Cities"></Icon>
+          <Icon
+            icon={<MdOutlineSettingsInputComposite />}
+            label="Settings"
+          ></Icon>
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 
