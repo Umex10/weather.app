@@ -1,5 +1,7 @@
 import type { Unit } from "../types/unit";
 
+//? This will convert from a given old unit to the new unit
+
 export function convertTemp(value: number, from: Unit, to: Unit): number {
   if (from === to) return Math.round(value);
 

@@ -1,17 +1,22 @@
-import { CityContextGiver } from "./com/CityContext";
+import { CityContextGiver } from "./context/giver/CityContextGiver";
 import Header from "./com/Header";
 import Main from "./com/Main";
-import { SearchProvider } from "./context/SearchContext";
+import { SearchContextGiver } from "./context/giver/SearchContextGiver";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className="mx-auto max-w-[1600px] h-screen relative">
-    <CityContextGiver>
-      <SearchProvider>
-        <Header></Header>
-        <Main></Main>
-      </SearchProvider>
-    </CityContextGiver>
+      <BrowserRouter>
+        <CityContextGiver>
+          <SearchContextGiver>
+
+            <Header></Header>
+            <Main></Main>
+            
+          </SearchContextGiver>
+        </CityContextGiver>
+      </BrowserRouter>
     </div>
   );
 }

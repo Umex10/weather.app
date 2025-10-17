@@ -1,4 +1,5 @@
 
+//? Return the current local time of the city
 
 export function localDate(timezoneOffset: number) {
   const localDate: Date = new Date(Date.now() + timezoneOffset * 1000);

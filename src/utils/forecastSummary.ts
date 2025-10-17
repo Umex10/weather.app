@@ -1,6 +1,8 @@
 import type { ForecastAPIReply } from "../types/forecast";
 
- 
+//? This will calculate the min temp
+//? and max temp of multiple datasets, which will receive from the api
+
  export function forecastSummary(forecast: ForecastAPIReply) {
    
  const today = new Date().getDate();
@@ -18,6 +20,6 @@ import type { ForecastAPIReply } from "../types/forecast";
   const minTemp = Math.round(Math.min(...todayForecast.map(item => item.main.temp_min)))
   const maxTemp = Math.round(Math.max(...todayForecast.map(item => item.main.temp_max)))
 
-  return `The low will be ${minTemp}°C and the high will be ${maxTemp}°C.`;
+  return `In the next 3 hours, the temp will range from ${minTemp}°C to ${maxTemp}°C.`;
  }
  

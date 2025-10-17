@@ -1,4 +1,6 @@
-export interface WeatherAPIReply {
+//? type of the object "weather" which we load from the api
+
+export type WeatherAPIReply =   {
   coord: {
     lon: number; // Längengrad
     lat: number; // Breitengrad

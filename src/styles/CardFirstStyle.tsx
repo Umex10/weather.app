@@ -1,8 +1,12 @@
 
+
 type CardContainerArgs = {
   children: React.ReactNode;
   className?: string;
 }
+
+/* This will be our styling class for the first com inside CurrentWeather
+   In order to reuse this com efficiently */
 
 const CardFirstStyle = ({children, className=""}: CardContainerArgs) => {
   return (
