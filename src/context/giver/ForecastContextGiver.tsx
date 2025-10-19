@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { ForecastContext } from "../contexts/ForecastContext";
-import { useForecast } from "../../hooks/data/useForecast";
+import { useForecast } from "../../hooks/Api/useForecast";
 import { useCityContext } from "../hooks/useCityContext";
 
 type ForecastContextGiverArgs = {

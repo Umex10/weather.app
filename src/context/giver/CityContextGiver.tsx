@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { CityContext } from "../contexts/CityContext";
-import { useUsersCity } from "../../hooks/data/useUsersCity";
+import { useUsersCity } from "../../hooks/Api/useUsersCity";
 
 type CityContextGiverArgs = {
   children: ReactNode;

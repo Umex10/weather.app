@@ -1,5 +1,5 @@
 import { WeatherContext } from "../contexts/WeatherContext";
-import { useCurrentWeather } from "../../hooks/data/useCurrentWeather";
+import { useCurrentWeather } from "../../hooks/Api/useCurrentWeather";
 import { type ReactNode } from "react";
 import { useCityContext } from "../hooks/useCityContext";
 

@@ -26,6 +26,12 @@ export type WeatherAPIReply =   {
     grnd_level?: number; // optional, nur bei Bodenstation
   };
 
+    rain?: {          // <- optional hinzufügen
+    "1h"?: number;  // optional, mm/h
+    "3h"?: number;  // optional, mm/3h
+  };
+
+
   visibility: number; // Sichtweite in Metern
 
   wind: {

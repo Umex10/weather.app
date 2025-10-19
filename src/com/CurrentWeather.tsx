@@ -1,71 +1,35 @@
 import type { Unit } from "../types/unit";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { useEffect, useState } from "react";
-import { convertTemp } from "../utils/convertTemp";
-import { localDate } from "../utils/date";
 import CardFirstStyle from "../styles/CardFirstStyle";
-import { forecastSummary } from "../utils/forecastSummary";
-import { useWeatherContext } from "../context/hooks/useWeatherContext";
-import { useForecastContext } from "../context/hooks/useForecastContext";
+import { useCertainWeatherData } from "../hooks/useCertainWeatherData";
 
 
 //? This will return the very first content on the main page "Weather"
 const CurrentWeather = () => {
   
-  // This will keep track what unit is currently displayed -> fahrenheit, celcius or kelvin
-  const [unit, setUnit] = useState<Unit>("celsius");
-  // Needed to be able to convert the unit to another. 
-  const [temp, setTemp] = useState(0);
+    const data = useCertainWeatherData();
 
-  // Using the context values, so I don't create a argument hell stack
-  const { weather} = useWeatherContext();
-  const { forecast} = useForecastContext();
-
-  // Initializes the current temp
-  useEffect(() => {
-    if (weather) {
-      setTemp(Math.round(weather.main.temp));
+    if (!data) {
+      return null;
     }
-  }, [weather]);
 
-  
- if (!weather || !forecast) return;
-
-  // We will use the "unit" variable in order to get the symbol
-  const symbol: Record<Unit, string> = {
-    celsius: "°C",
-    kelvin: "K",
-    fahrenheit: "F",
-  };
-
-  // local date text
-  const local: string = localDate(weather.timezone);
-
-  // feels like text
-  const feelsLike: number = weather.main.feels_like;
-  const feelsLikeText: string = `Feels like ${Math.round(feelsLike)} ${
-    symbol[unit]
-  }`;
-
-  // desc
-  const desc: string = weather.weather[0].main;
-
-  // icon
-  const icon: string = weather.weather[0].icon;
-
-  // forecast
-  const forecastText = forecastSummary(forecast);
-
-  function handleUnit(newUnit: Unit) {
-    const lastUnit = unit;
-    setUnit(newUnit);
-    setTemp(convertTemp(temp, lastUnit, newUnit));
-  }
+    const {
+      unit,
+      temp,
+      feelsLike,
+      local,
+      desc,
+      icon,
+      minTemp,
+      maxTemp,
+      symbol,
+      handleUnit,
+    } = data;
 
   return (
     <CardFirstStyle>
       {/*  Main styling div  */}
-      <div className="flex flex-col gap-5 p-4">
+      <section className="flex flex-col gap-5 p-4">
         {/*  First Row  */}
         <div className="flex flex-row items-start justify-between">
           {/*  First row -> left side  */}
@@ -100,7 +64,7 @@ const CurrentWeather = () => {
           className="w-full flex flex-row items-center justify-start gap-10 md:gap-14
         lg:gap-10"
         >
-           {/*  icon, temp and the symbol unit on the left side */}
+          {/*  icon, temp and the symbol unit on the left side */}
           <div className="flex flex-row items-center gap-0">
             <img
               src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
@@ -129,7 +93,7 @@ const CurrentWeather = () => {
           <div className="flex flex-col">
             <p className="text-violet-500 text-[13px] lg:text-lg">{desc}</p>
             <p className="text-gray-800  dark:text-gray-400 text-[13px] lg:text-lg">
-              {feelsLikeText}
+              {`Feels like ${feelsLike} ${symbol[unit]}`}
             </p>
           </div>
         </div>
@@ -139,9 +103,9 @@ const CurrentWeather = () => {
           className="text-gray-800  dark:text-gray-400 text-[13px] lg:text-lg
         md:text-nowrap"
         >
-          {forecastText}
+          {`Today, the temperature will range from ${minTemp} ${symbol[unit]} to ${maxTemp} ${symbol[unit]}.`}
         </p>
-      </div>
+      </section>
     </CardFirstStyle>
   );
 };
