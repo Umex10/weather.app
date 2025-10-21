@@ -1,10 +1,10 @@
 import type { ForecastAPIReply } from "../types/forecast";
-import { forecastSummary } from "./forecastSummary";
+import { forecastTodayData } from "./forecastTodayData";
 
 //? Use all indices that have the current day, and calculate min and max value
  export function minMaxValue(forecast: ForecastAPIReply) {
      // forecast
-      const forecastToday = forecastSummary(forecast);
+      const forecastToday = forecastTodayData(forecast);
 
       if (!forecastToday || typeof forecastToday === "string") return;
 

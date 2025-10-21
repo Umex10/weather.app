@@ -6,7 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="mx-auto max-w-[1600px] h-screen relative">
+    <div className="mx-auto max-w-[1600px]
+    h-screen max-h-[90vh] md:max-h-screen
+     relative">
       <BrowserRouter>
         <CityContextGiver>
           <SearchContextGiver>

@@ -22,7 +22,7 @@ const CurrentWeather = () => {
       icon,
       minTemp,
       maxTemp,
-      symbol,
+      symbols,
       handleUnit,
     } = data;
 
@@ -80,20 +80,21 @@ const CurrentWeather = () => {
               >
                 {temp}
               </p>
-              <p
+              <span
                 className="absolute top-0 -right-4
             text-violet-500 text-md"
               >
-                {symbol[unit]}
-              </p>
+                {symbols[unit]}
+              </span>
             </div>
           </div>
 
           {/*  desc and feelsLikeText on the right side */}
           <div className="flex flex-col">
             <p className="text-violet-500 text-[13px] lg:text-lg">{desc}</p>
-            <p className="text-gray-800  dark:text-gray-400 text-[13px] lg:text-lg">
-              {`Feels like ${feelsLike} ${symbol[unit]}`}
+            <p className="text-gray-800  dark:text-gray-400
+             text-[13px] lg:text-lg text-nowrap">
+              {`Feels like ${feelsLike} ${symbols[unit]}`}
             </p>
           </div>
         </div>
@@ -103,7 +104,7 @@ const CurrentWeather = () => {
           className="text-gray-800  dark:text-gray-400 text-[13px] lg:text-lg
         md:text-nowrap"
         >
-          {`Today, the temperature will range from ${minTemp} ${symbol[unit]} to ${maxTemp} ${symbol[unit]}.`}
+          {`Today, the temperature will range from ${minTemp} ${symbols[unit]} to ${maxTemp} ${symbols[unit]}.`}
         </p>
       </section>
     </CardFirstStyle>

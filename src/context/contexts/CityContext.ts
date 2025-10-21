@@ -7,6 +7,6 @@ type UseCityContextArgs = {
 
 export const CityContext = createContext<UseCityContextArgs>({
   city: "",
-  setCity: () => {}, // leere Funktion als Default
+  setCity: () => {}
 });
 

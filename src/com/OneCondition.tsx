@@ -15,7 +15,8 @@ const OneCondition = ({ name, value, symbol }: OneConditionArgs) => {
 
   return (
     // one condition border
-    <div className="w-full border border-gray-400/50 rounded-xl text-white py-4 px-2 md:px-3 min-w-[90px]">
+    <div className="w-full border border-gray-400/50 rounded-xl text-white
+     py-4 px-2 md:px-3 min-w-[90px]">
       { /* Main style div */}
       <div className="flex flex-row items-center"> 
         {symbolWithClass}

@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
-  @apply min-h-screen bg-custom-gradient-dark;
+html, body {
+  height: 100%;
+}
+
+/* needed, so the backroundcolor is smoothly integrated */
+body {
+  @apply bg-custom-gradient-dark;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#root {
+  @apply min-h-full bg-custom-gradient-dark bg-fixed bg-no-repeat bg-cover;
+   background-attachment: fixed; /* wichtig! Tailwind kann 'bg-fixed' buggen */
 }

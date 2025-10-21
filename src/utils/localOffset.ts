@@ -1,7 +1,7 @@
 
-//? Return the current local time of the city
+//? Needed for the /weather api reply, actually holds the current local hours/minutes
 
-export function localDate(timezoneOffset: number) {
+export function localOffset(timezoneOffset: number) {
   const localDate: Date = new Date(Date.now() + timezoneOffset * 1000);
 
   const hours: string = localDate.getUTCHours().toString().padStart(2, "0");
@@ -9,4 +9,3 @@ export function localDate(timezoneOffset: number) {
 
   return `${hours}:${minutes}`;
 }
-

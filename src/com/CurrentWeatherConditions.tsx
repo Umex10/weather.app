@@ -28,7 +28,8 @@ const CurrentWeatherConditions = () => {
   } = data;
  
   return (
-    <section className="grid grid-cols-2 lg:grid-cols-3 w-full gap-4 min-w-[300px] max-w-md md:max-w-none ">
+    <section className="grid grid-cols-2 lg:grid-cols-3
+     w-full gap-4 min-w-[300px] max-w-md md:max-w-none ">
       <OneCondition
         name="Air Quality"
         value={aqiDesc}

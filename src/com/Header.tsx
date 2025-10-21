@@ -32,7 +32,7 @@ const Header = () => {
   const { handleInput, handleClickIcon, handleKeyDown } = useEvents();
 
   return (
-    <header className="absolute top-0 left-0 w-full md:w-auto md:h-full p-6">
+    <header className="absolute top-0 left-0 w-full md:w-auto md:h-3/7 p-6">
       {/* Styles the arrangment of the items */}
       <div
         className="p-4 flex flex-row md:flex-col items-center justify-between 
