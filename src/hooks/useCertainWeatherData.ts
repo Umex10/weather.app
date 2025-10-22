@@ -34,7 +34,7 @@ export function useCertainWeatherData() {
       const forecastToday = forecastTodayData(forecast);
 
       if (!forecastToday || typeof forecastToday === "string") return;
-      
+
       const minMax = minMaxValue(forecastToday);
       if (!minMax) {
         return;
