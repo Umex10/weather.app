@@ -7,6 +7,7 @@ import { WeatherErrorChecks } from "../Weather/WeatherErrorChecks";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ForecastCityDetails from "../Forecast/ForecastCityDetails";
 import { UnitContextGiver } from "../../context/giver/UnitContextGiver";
+import SettingsDetails from "../Settings/SettingsDetails";
 
 //? Main will hold the main content of the website.
 //? later there will be "Routers" to Main will manage it too.
@@ -54,6 +55,14 @@ const Main = () => {
                 </div>
               }
             ></Route>
+            <Route path="/settings" 
+            element={
+              <div className="w-full">
+                  <SettingsDetails></SettingsDetails>
+              </div>
+            }>
+
+            </Route>
           </Routes>
         </ForecastContextGiver>
       </WeatherContextGiver>

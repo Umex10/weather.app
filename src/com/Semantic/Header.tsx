@@ -5,7 +5,6 @@ import { useState } from "react";
 import Input from "../Input";
 import Icon from "../Icon";
 import { IoMdClose } from "react-icons/io";
-import { FaCity } from "react-icons/fa";
 import { MdOutlineSettingsInputComposite } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useEvents } from "../../hooks/useEvents";
@@ -66,22 +65,20 @@ const Header = () => {
 
             {/* Weather Icon  */}
             <Link to="/weather">
-              <Icon icon={<CiCloudOn />} label="Weather"
-              isActive={path === "/weather"}
-              handleIconActive={() => handleIconActive("/weather")}></Icon>
-            </Link>
-
-            {/*  Cities Icon */}
-            <Link to="/cities">
-              <Icon icon={<FaCity />} label="Cities"
-              isActive={path === "/cities"}
-              handleIconActive={() => handleIconActive("/cities")}></Icon>
+              <Icon icon={<CiCloudOn onClick={() => {
+                  if (hamburger) toggleHamburger();
+                }} />} label="Weather"
+              isActive={path === "/weather"} 
+              handleIconActive={() => handleIconActive("/weather")}
+              ></Icon>
             </Link>
 
             {/* Settings Icon  */}
             <Link to="/settings">
               <Icon
-                icon={<MdOutlineSettingsInputComposite />}
+                icon={<MdOutlineSettingsInputComposite onClick={() => {
+                  if (hamburger) toggleHamburger();
+                }} />}
                 label="Settings"
                  isActive={path === "/settings"}
                 handleIconActive={() => handleIconActive("/settings")}
