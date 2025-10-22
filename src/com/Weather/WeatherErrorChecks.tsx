@@ -1,6 +1,6 @@
 
-import { useWeatherContext } from "../context/hooks/useWeatherContext";
-import { useForecastContext } from "../context/hooks/useForecastContext";
+import { useWeatherContext } from "../../context/hooks/useWeatherContext";
+import { useForecastContext } from "../../context/hooks/useForecastContext";
 import type { ReactNode } from "react";
 
 type WeatherErrorChecksArgs = {

@@ -1,5 +1,5 @@
 
-import CurrentSun from './CurrentSun'
+import CurrentSun from './../CurrentSun'
 import CurrentWeather from './CurrentWeather'
 import CurrentWeatherConditions from './CurrentWeatherConditions'
 
@@ -8,7 +8,7 @@ import CurrentWeatherConditions from './CurrentWeatherConditions'
 const WeatherCityDetails = () => {
   return (
     <div className='w-full h-full md:flex-[3] pt-[2rem]
-    flex flex-col items-center gap-8 
+    flex flex-col items-center gap-8 md:gap-0 md:justify-between
     md:items-start'>
       {/* LEFT SIDE */}
       

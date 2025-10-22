@@ -37,7 +37,7 @@ export const useUsersCity = () => {
           );
           const data = await res.json();
           setUsersCity(data.name);
-          console.log(data.name)
+          // Set key userLocation, necessary for CityContextGiver
           localStorage.setItem("usersLocation", data.name);
         } catch (error) {
            console.log(error);

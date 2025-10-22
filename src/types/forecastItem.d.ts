@@ -31,7 +31,7 @@ export interface ForecastItem {
   };
 
   visibility: number;
-  pop: number; // "probability of precipitation"
+  pop: number; // 
   
   sys: {
     pod: string; // "d" oder "n" für day/night

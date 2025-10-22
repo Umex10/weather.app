@@ -2,13 +2,13 @@ import { CiCloudMoon, CiCloudOn } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 import { useState } from "react";
-import Input from "./Input";
-import Icon from "./Icon";
+import Input from "../Input";
+import Icon from "../Icon";
 import { IoMdClose } from "react-icons/io";
 import { FaCity } from "react-icons/fa";
 import { MdOutlineSettingsInputComposite } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useEvents } from "../hooks/useEvents";
+import { useEvents } from "../../hooks/useEvents";
 
 //? This header will be a normal header for mobile, but on deskto it should display
 //? as a side bar
@@ -32,7 +32,7 @@ const Header = () => {
   const { handleInput, handleClickIcon, handleKeyDown } = useEvents();
 
   return (
-    <header className="absolute top-0 left-0 w-full md:w-auto md:h-3/7 p-6">
+    <header className="absolute top-0 left-0 w-full md:h-[1020px] md:w-auto md:h-3/7 p-6">
       {/* Styles the arrangment of the items */}
       <div
         className="p-4 flex flex-row md:flex-col items-center justify-between 

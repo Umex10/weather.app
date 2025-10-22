@@ -7,12 +7,13 @@ import { minMaxValue } from "../utils/minMaxValue";
 import { useUnitContext } from "../context/hooks/useUnitContext";
 import { unitSymbols } from "../utils/unitSymbols";
 import { localOffset } from "../utils/localOffset";
+import { forecastTodayData } from "../utils/forecastDateUtils/forecastTodayData";
 
 //? This one will fill the data inside CurrentWeather react element
 
 export function useCertainWeatherData() {
   // This will keep track what unit is currently displayed -> fahrenheit, celcius or kelvin
-  const {unit, setUnit, oldUnit, setOldUnit} = useUnitContext();
+  const {unit, setUnit} = useUnitContext();
   const [temp, setTemp] = useState(0);
   const [minTemp, setMinTemp] = useState(0);
   const [maxTemp, setMaxTemp] = useState(0);
@@ -30,8 +31,11 @@ export function useCertainWeatherData() {
       // feels like text
       setFeelsLike(Math.round(weather.main.feels_like));
 
-      //Update feelslike text --> min and max value
-      const minMax = minMaxValue(forecast);
+      const forecastToday = forecastTodayData(forecast);
+
+      if (!forecastToday || typeof forecastToday === "string") return;
+      
+      const minMax = minMaxValue(forecastToday);
       if (!minMax) {
         return;
       }
@@ -58,7 +62,7 @@ export function useCertainWeatherData() {
 
   // Update units wherever units are used
   function handleUnit(newUnit: Unit) {
-    setOldUnit(unit);
+    const oldUnit = unit;
     setUnit(newUnit);
 
     setTemp(convertTemp(temp, oldUnit, newUnit));

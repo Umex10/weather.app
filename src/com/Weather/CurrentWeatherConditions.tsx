@@ -5,9 +5,9 @@ import {
   TiWeatherWindy,
   TiWeatherWindyCloudy,
 } from "react-icons/ti";
-import OneCondition from "./OneCondition";
+import OneCondition from "../OneCondition";
 import { WiHumidity } from "react-icons/wi";
-import { useCertainAirData } from "../hooks/useCertainAirData";
+import { useCertainAirData } from "../../hooks/useCertainAirData";
 
 const CurrentWeatherConditions = () => {
 

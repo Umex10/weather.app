@@ -23,7 +23,7 @@ const OneCondition = ({ name, value, symbol }: OneConditionArgs) => {
         {/* Text div */}
         <div className="flex flex-col ml-2 md:ml-3 justify-center gap-0.5">
           <p className="text-[10px] md:text-sm">{name}</p>
-          <p className="font-extrabold text-[16px] md:text-xl leading-none">{value}</p>
+          <p className="font-extrabold text-[16px] md:text-xl leading-none text-nowrap">{value}</p>
         </div>
       </div>
     </div>

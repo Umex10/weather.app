@@ -10,6 +10,7 @@ type CityContextGiverArgs = {
 
 export const CityContextGiver = ({ children }: CityContextGiverArgs) => {
   const lastSearchedCity = localStorage.getItem("lastSearchedCity");
+   // get last searched city
   const defaultCity = lastSearchedCity || "Vienna";
   const [city, setCity] = useState(defaultCity);
 
@@ -17,17 +18,14 @@ export const CityContextGiver = ({ children }: CityContextGiverArgs) => {
   const {usersCity} = useUsersCity();
   
   useEffect(() => {
+  // Get location from pc of the user
   const localstorageCity = localStorage.getItem("usersLocation");
 
-  /* 1. Location of pc (using variable because it may be faster then geoLocation request)
-     2. Actual reply of the geoLocation request. 
-     3. Last Searched city on the last visit of the website
-     4. default City: Vienna */
+  if ((usersCity || localstorageCity) && city === defaultCity) {
   const initialCity = usersCity || localstorageCity || defaultCity;
-
-  //set the context for all children
   setCity(initialCity);
-  }, [usersCity, defaultCity])
+}
+  }, [usersCity, defaultCity, city])
   
   return (
     <CityContext.Provider value={{ city, setCity }}>

@@ -1,7 +1,7 @@
-import type { Unit } from "../types/unit";
+import type { Unit } from "../../types/unit";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import CardFirstStyle from "../styles/CardFirstStyle";
-import { useCertainWeatherData } from "../hooks/useCertainWeatherData";
+import CardFirstStyle from "../../styles/CardFirstStyle";
+import { useCertainWeatherData } from "../../hooks/useCertainWeatherData";
 
 
 //? This will return the very first content on the main page "Weather"

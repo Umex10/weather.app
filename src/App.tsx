@@ -1,13 +1,13 @@
 import { CityContextGiver } from "./context/giver/CityContextGiver";
-import Header from "./com/Header";
-import Main from "./com/Main";
+import Header from "./com/Semantic/Header";
+import Main from "./com/Semantic/Main";
 import { SearchContextGiver } from "./context/giver/SearchContextGiver";
 import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className="mx-auto max-w-[1600px]
-    h-screen max-h-[90vh] md:max-h-screen
+    my-auto
      relative">
       <BrowserRouter>
         <CityContextGiver>

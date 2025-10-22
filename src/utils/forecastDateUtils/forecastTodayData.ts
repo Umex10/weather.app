@@ -1,6 +1,4 @@
-import type { ForecastAPIReply } from "../types/forecast";
-
-
+import type { ForecastAPIReply } from "../../types/forecast";
 
  export function forecastTodayData(forecast: ForecastAPIReply) {
    
