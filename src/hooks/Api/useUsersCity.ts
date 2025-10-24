@@ -11,7 +11,8 @@ export const useUsersCity = () => {
   const [usersCity, setUsersCity] = useState("");
 
   const baseURL = "https://api.openweathermap.org/data/2.5";
-  const key = "2e2d71541ac141dc0c47e96be3e6714c";
+  const key = import.meta.env.VITE_WEATHER_KEY;
+  console.log("Mein KEY:", import.meta.env.VITE_WEATHER_KEY)
 
   useEffect(() => {
 

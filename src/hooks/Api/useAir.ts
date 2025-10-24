@@ -9,7 +9,7 @@ export const useAir = (lat: number, lon: number) => {
   const [airError, setAirError] = useState<string | null>(null);
 
   const baseURL = "https://api.openweathermap.org/data/2.5";
-  const key = "2e2d71541ac141dc0c47e96be3e6714c";
+  const key = import.meta.env.VITE_WEATHER_KEY;
 
   useEffect(() => {
     const fetchData = async () => {
